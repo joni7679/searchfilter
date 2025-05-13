@@ -10,7 +10,7 @@ const ItemList = ({ product }) => {
             <div className="flex justify-center items-start item-list h-[70vh] p-5 overflow-y-auto  text-white w-full">
                 <div className="grid md:grid-cols-3 gap-6 max-w-7xl w-full ">
                     {product.map((item, index) => (
-                        <Link to={`/product/${item.id}`}
+                        <Link to={`/product/${item.id}?title=${encodeURIComponent(item.title)}`}
                             key={index}
                             className="p-5 bg-gray-800 rounded-xl sm:grid-cols-1 product-list-item shadow-md border hover:shadow-lg transition-all duration-300">
                             <div className='w-full'>

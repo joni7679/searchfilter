@@ -1,9 +1,20 @@
 import React from 'react'
 
-function SearchContext() {
-  return (
-    <div>SearchContext</div>
-  )
-}
+import { createContext, useState } from 'react';
 
-export default SearchContext
+
+export const SearchContext = createContext();
+const SearchProvider = ({ children }) => {
+  const [searchquery, setsearchQuery] = useState('');
+
+
+
+
+  return (
+    <SearchContext.Provider value={{ searchquery, setsearchQuery }}>
+      {children}
+    </SearchContext.Provider>
+  );
+};
+
+export default SearchProvider;

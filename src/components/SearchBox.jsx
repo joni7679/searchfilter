@@ -33,12 +33,25 @@ const SearchBox = () => {
         }
     };
 
-    const productTitle = (productId) => {
-        setsearchQuery(productId.title)
-        navigate(`/product/${productId}`);
+    const keyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
     }
 
-    return (
+    const productTitle = (product) => {
+        setsearchQuery(product.title);
+        console.log(product.title);
+
+        setTimeout(() => {
+            // navigate(`/product/${product.id}`);
+            navigate(`/product/${product.id}?q=${encodeURIComponent(product.title)}`);
+        }, 100)
+
+    }
+
+
+    return ( 
         <div className="mb-6 text-white z-20 w-[80%] relative">
             <input
                 type="text"
@@ -46,7 +59,7 @@ const SearchBox = () => {
                 value={searchquery}
                 onChange={handleInputChange}
                 onFocus={() => setIsClick(true)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                onKeyDown={keyDown}
                 className="relative w-full px-4 py-2 border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <CiSearch
@@ -67,15 +80,23 @@ const SearchBox = () => {
             <div
                 onMouseEnter={() => setIsClick(true)}
                 onMouseLeave={() => setIsClick(false)}
+
+
                 className={`absolute w-full max-h-60 overflow-scroll auto-suggestion-list bg-gray-800 rounded-2xl flex flex-col gap-2 p-4 mt-1 ${isClicked && (results.length > 0 || searchquery) ? '' : 'hidden'}`}>
                 {results.length > 0 ? (
                     <ul>
                         {results.map((item, index) => (
                             <li
-                                key={index} onClick={() => productTitle(item.id || item.title)}
+                                key={index} onClick={() => productTitle(item)}
                                 className="p-2 hover:bg-gray-700 rounded cursor-pointer flex items-center gap-2">
-                                <FaSearch />
-                                {item.title}
+                                <div className='flex items-center gap-1.5'>
+                                    <div className='w-8 h-8 bg-gray-700 rounded'>
+                                        <img src={item.thumbnail} loading='lazy' className='w-full h-full object-cover' alt="" />
+                                    </div>
+                                    <FaSearch />
+                                    {item.title}
+                                </div>
+
                             </li>
                         ))}
                     </ul>
@@ -87,6 +108,7 @@ const SearchBox = () => {
                     )
                 )}
                 {/* <ItemList product={results} /> */}
+
             </div>
         </div>
     );
