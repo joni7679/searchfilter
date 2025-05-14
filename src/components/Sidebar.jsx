@@ -1,6 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CategoryData } from '../context/CategoriesContext'
 
-function Sidebar({ categories }) {
+function Sidebar() {
+    let { categories, setCategories, loading } = useContext(CategoryData);
+    console.log(categories);
+    if (loading) {
+        return <h1 className='text-white'>loading......</h1>
+    }
+
     return (
         <>
             <div className='bg-gray-800 w-full h-screen p-5'>

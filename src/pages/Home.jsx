@@ -31,16 +31,10 @@ function Home() {
         }
     };
 
-    const CategoriesData = async () => {
-        let responise = await axios.get(`https://dummyjson.com/products/categories`);
-        let data = await responise.data;
-        setCategories(data)
-        console.log(data);
-    }
+    
 
     useEffect(() => {
         ProductsData();
-        CategoriesData();
     }, []);
 
 
@@ -52,7 +46,7 @@ function Home() {
                     <Navbar />
                     <div className="flex  md:flex-row items-start">
                         <div className='w-full md:w-[20%]'>
-                            <Sidebar categories={categories} />
+                            <Sidebar />
                         </div>
                         <div className="w-full md:w-[80%] bg-gray-900">
                             <ItemList product={product} />

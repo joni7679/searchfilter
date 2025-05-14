@@ -2,13 +2,24 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import PaginitonBtn from './PaginitonBtn';
 import { Link } from 'react-router-dom';
+import Shimmer from './Shimmer';
 
 const ItemList = ({ product }) => {
-
+    { product.length }
+    if (!product) {
+        return (
+            <>
+                <Navbar />
+                <div className="w-full h-screen flex items-center justify-center bg-gray-900 text-white">
+                    <Shimmer />
+                </div>
+            </>
+        );
+    }
     return (
         <>
             <div className="flex justify-center items-start item-list h-[70vh] p-5 overflow-y-auto  text-white w-full">
-                <div className="grid md:grid-cols-3 gap-6 max-w-7xl w-full ">
+                <div className="grid md:grid-cols-3 gap-6 max-w-7xl w-full">
                     {product.map((item, index) => (
                         <Link to={`/product/${item.id}?title=${encodeURIComponent(item.title)}`}
                             key={index}
@@ -36,12 +47,9 @@ const ItemList = ({ product }) => {
                         </Link>
                     ))}
                 </div>
-
             </div>
             <PaginitonBtn />
         </>
-
-
     );
 };
 

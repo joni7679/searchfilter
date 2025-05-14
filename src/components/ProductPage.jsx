@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import { FaStar } from 'react-icons/fa';
 import Loading from './Loading';
+import LargeShimmerCard from './LargeShimmerCard';
 
 function ProductPage() {
     const { id } = useParams();
@@ -29,7 +30,7 @@ function ProductPage() {
             <>
                 <Navbar />
                 <div className="w-full h-screen flex items-center justify-center bg-gray-900 text-white">
-                    <h1 className="text-2xl font-semibold">Loading...</h1>
+                    <LargeShimmerCard />
                 </div>
             </>
         );
@@ -39,7 +40,7 @@ function ProductPage() {
         <>
             <Suspense fallback={<Loading />}>
                 <Navbar />
-                <main className='w-full bg-gray-900  flex items-center justify-center sm:flex-col text-white product-container'>
+                <main className='w-full min-h-screen bg-gray-900  flex items-center justify-center sm:flex-col text-white product-container'>
                     <div className='w-[60vw] mt-5 h-auto border-2 border-white shadow-2xs rounded p-5 bg-gray-800 flex gap-5 
                     items-product'>
                         <div className='img-list '>
@@ -71,7 +72,6 @@ function ProductPage() {
                             <div className="flex mt-5 gap-2 items-center">
                                 <button className='px-[25px] py-[10px] bg-gray-900 text-white rounded-xl cursor-pointer hover:bg-gray-950'>Add To Cart</button>
                                 <button className='px-[25px] py-[10px] bg-gray-900 text-white rounded-xl cursor-pointer hover:bg-gray-950'>Buy Now</button>
-
                             </div>
                         </div>
                     </div>

@@ -26,7 +26,7 @@ const SearchBox = () => {
             console.log(response.data.products);
             console.log(response.data.products);
         } catch (error) {
-            console.error("Error fetching products:", error);
+            console.error("Error fetching products plz try agin leater.........:", error);
         }
     };
 
@@ -45,10 +45,7 @@ const SearchBox = () => {
             // navigate(`/product/${product.id}?q=${encodeURIComponent(product.title)}`);
             navigate(`/search?q=${encodeURIComponent(product.title)}`);
         }, 1000)
-
     }
-
-
     return (
         <div className="mb-6 text-white z-20 w-[80%] relative">
             <input

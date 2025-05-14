@@ -16,6 +16,23 @@
     display: none;
 }
 
+.shimmer-effect {
+    position: relative;
+    background: linear-gradient(90deg, #364153, #101828 , #1E2939 );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
 @media (max-width:900px) {
 
     .items-product {
@@ -26,7 +43,9 @@
 }
 
 @media (max-width:640px) {
-    .product-container {
+
+    .product-container,
+    .xs {
         flex-direction: column;
         align-items: center;
 
