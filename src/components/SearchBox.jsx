@@ -18,10 +18,7 @@ const SearchBox = () => {
     };
 
     const handleSearch = async () => {
-        if (searchquery.trim() === '') {
-            setResults([]);
-            return;
-        }
+
         navigate(`/search?q=${encodeURIComponent(searchquery.trim())}`);
         try {
             const response = await axios.get(`https://dummyjson.com/products/search?q=${searchquery}`);
@@ -45,13 +42,14 @@ const SearchBox = () => {
 
         setTimeout(() => {
             // navigate(`/product/${product.id}`);
-            navigate(`/product/${product.id}?q=${encodeURIComponent(product.title)}`);
-        }, 100)
+            // navigate(`/product/${product.id}?q=${encodeURIComponent(product.title)}`);
+            navigate(`/search?q=${encodeURIComponent(product.title)}`);
+        }, 1000)
 
     }
 
 
-    return ( 
+    return (
         <div className="mb-6 text-white z-20 w-[80%] relative">
             <input
                 type="text"
@@ -107,8 +105,6 @@ const SearchBox = () => {
                         </div>
                     )
                 )}
-                {/* <ItemList product={results} /> */}
-
             </div>
         </div>
     );

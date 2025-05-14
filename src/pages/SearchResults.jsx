@@ -1,67 +1,73 @@
-import React, { lazy, Suspense, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 const Navbar = lazy(() => import('../components/Navbar'));
-
 import Loading from '../components/Loading';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-// import Sidebar from '../components/Sidebar'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import ItemList from '../components/ItemList';
+
 
 
 function SearchResults() {
-    const [searchquery, setsearchQuery] = useState('');
-    const [results, setResults] = useState([]);
-    const navigate = useNavigate();
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false)
+    const { search } = useLocation();
+    console.log("search", search);
+    const queryParams = new URLSearchParams(search);
+    console.log("queryParams", queryParams);
+    const searchQuery = queryParams.get('q');
+    console.log("searchQuery", searchQuery);
 
-    const handleInputChange = (e) => {
-        setsearchQuery(e.target.value);
-    };
-
-    const handleSearch = async () => {
-        if (searchquery.trim() === '') {
-            setResults([]);
-            return;
-        }
-        navigate(`/search?q=${encodeURIComponent(searchquery.trim())}`);
+    let fetchProducts = async () => {
         try {
-            const response = await axios.get(`https://dummyjson.com/products/search?q=${searchquery}`);
-            setResults(response.data.products);
+            let response = await axios.get(`https://dummyjson.com/products/search?q=${searchQuery}`);
             console.log(response.data.products);
-            console.log(response.data.products);
+            setProducts(response.data.products);
+            if (!response.ok) {
+                console.log("no found");
+            }
         } catch (error) {
-            console.error("Error fetching products:", error);
-        }
-    };
-
-    const keyDown = (e) => {
-        if (e.key === 'Enter') {
-            handleSearch();
+            console.log("error featching peroblem plz try aging", error);
         }
     }
 
-    const productTitle = (product) => {
-        setsearchQuery(product.title);
-        console.log(product.title);
+    useEffect(() => {
+        if (searchQuery) {
+            fetchProducts()
+        }
+    }, [searchQuery])
 
-        setTimeout(() => {
-            // navigate(`/product/${product.id}`);
-            navigate(`/product/${product.id}?q=${encodeURIComponent(product.title)}`);
-        }, 100)
-
+    if (!products) {
+        return (
+            <>
+                <Navbar />
+                <div className="w-full h-screen flex items-center justify-center bg-gray-900 text-white">
+                    <h1 className="text-2xl font-semibold">Loading...</h1>
+                </div>
+            </>
+        );
     }
+
     return (
         <>
             <Suspense fallback={<Loading />}>
-                <main className='w-full bg-gray-900'>
+                <main className='w-full bg-gray-900 h-screen'>
                     <Navbar />
                     <div className="flex  md:flex-row items-start">
                         <div className='w-full md:w-[20%]'>
                             {/* <Sidebar/> */}
                         </div>
                         <div className="w-full md:w-[80%] bg-gray-900">
+                            {products.length > 0 ? (
+                                <ItemList product={products} />
+                            ) : (
+                                <div className='w-full h-screen flex items-center justify-center'>
+                                    <h1 className='text-white font-semibold text-4xl'>no data found {searchQuery}</h1>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </main>
-            </Suspense>
+            </Suspense >
         </>
     )
 }

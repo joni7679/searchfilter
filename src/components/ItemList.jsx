@@ -14,7 +14,7 @@ const ItemList = ({ product }) => {
                             key={index}
                             className="p-5 bg-gray-800 rounded-xl sm:grid-cols-1 product-list-item shadow-md border hover:shadow-lg transition-all duration-300">
                             <div className='w-full'>
-                                <img loading='lazy' src={item.thumbnail} className='w-full h-full object-contain' alt="" />
+                                <img loading='lazy' src={item.thumbnail} className='w-full h-full object-contain' alt={item.thumbnail} />
                             </div>
                             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                             <p className="text-sm text-gray-100 mb-2">{item.description}</p>

@@ -40,12 +40,26 @@ function ProductPage() {
             <Suspense fallback={<Loading />}>
                 <Navbar />
                 <main className='w-full bg-gray-900  flex items-center justify-center sm:flex-col text-white product-container'>
-                    <div className='w-[60vw] mt-5 h-auto border-2 border-white shadow-2xs rounded p-5 bg-gray-800 flex gap-5 items-product'>
-                        <img
-                            src={product.thumbnail}
-                            alt={product.title}
-                            className='w-60 h-60 object-cover rounded'
-                        />
+                    <div className='w-[60vw] mt-5 h-auto border-2 border-white shadow-2xs rounded p-5 bg-gray-800 flex gap-5 
+                    items-product'>
+                        <div className='img-list '>
+                            {product.images.map((img, index) => {
+                                return (
+                                    <div key={index} className='w-16 h-16 bg-gray-900 mt-2 rounded-xl'>
+                                        <img src={img} className='w-full h-full object-cover' alt={img} />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        <div className='main-img-div w-60 h-60 flex-shrink-0'>
+                            <img
+                                loading='lazy'
+                                src={product.thumbnail}
+                                alt={product.title}
+                                className='w-full h-full object-cover rounded'
+                            />
+                        </div>
+
                         <div>
                             <h1 className='text-3xl font-bold mb-2'>{product.title}</h1>
                             <p className='text-gray-300 mb-2'>{product.description}</p>
@@ -54,6 +68,11 @@ function ProductPage() {
                             <p className='text-green-400'>In Stock: {product.stock}</p>
                             <p className='text-green-400 font-semibold capitalize'>warrantyInformation : {product.warrantyInformation}</p>
                             <p className='text-green-400 font-semibold capitalize'>returnPolicy : {product.returnPolicy}</p>
+                            <div className="flex mt-5 gap-2 items-center">
+                                <button className='px-[25px] py-[10px] bg-gray-900 text-white rounded-xl cursor-pointer hover:bg-gray-950'>Add To Cart</button>
+                                <button className='px-[25px] py-[10px] bg-gray-900 text-white rounded-xl cursor-pointer hover:bg-gray-950'>Buy Now</button>
+
+                            </div>
                         </div>
                     </div>
                     <h1 className='mt-5 text-2xl'>Previous customer Reviews</h1>

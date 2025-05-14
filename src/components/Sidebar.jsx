@@ -13,7 +13,6 @@ function Sidebar({ categories }) {
                             )
                         })
                     }
-                    
                 </ul>
             </div>
         </>
