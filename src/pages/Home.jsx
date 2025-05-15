@@ -5,12 +5,11 @@ import Shimmer from '../components/Shimmer';
 const Navbar = lazy(() => import('../components/Navbar'));
 const Sidebar = lazy(() => import('../components/Sidebar'));
 const ItemList = lazy(() => import('../components/ItemList'));
-function Home() {
+function Home({isopen,SetisOpen}) {
     const [product, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [totalPage, setotalPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
-    const [isopen, SetisOpen] = useState(false);
     let ProductPerPage = 5;
     // nextpagelogic
     const handleNext = () => {
@@ -27,7 +26,7 @@ function Home() {
         try {
             const response = await axios.get(`https://dummyjson.com/products`);
             setProducts(response.data.products);
-            console.log(response.data.products);
+            // console.log(response.data.products);
         } catch (error) {
             console.error("Error fetching products:", error);
         }
@@ -54,15 +53,8 @@ function Home() {
         <>
             <Suspense fallback={<Loading />}>
                 <main className='w-full bg-gray-900'>
-                    <Navbar />
-                    <div className="flex  md:flex-row items-start">
-                        <div className={`${isopen ? "w-0" : "md:w-[20%]"}`}
-                        >
-                            <Sidebar isopen={isopen} SetisOpen={SetisOpen} />
-                        </div>
-                        <div className={`w-full  bg-gray-900 trtransition-all duration-500 linear px-5 ${isopen ? "md:w-full" : "md-w-[80%]"}`}>
-                            <ItemList product={product} isopen={isopen} SetisOpen={SetisOpen} />
-                        </div>
+                    <div className={`w-full  bg-gray-900 trtransition-all duration-500 linear px-5 ${isopen ? "md:w-full" : "md-w-[80%]"}`}>
+                        <ItemList product={product} isopen={isopen} SetisOpen={SetisOpen} />
                     </div>
                 </main>
             </Suspense>

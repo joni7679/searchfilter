@@ -18,8 +18,6 @@ export default function Error404() {
                     <Link to={`/`} rel="noopener noreferrer" href="#" className="px-8 py-3 font-semibold roundeddark bg-blue-600 text-white">Back to homepage</Link>
                 </div>
             </div>
-
-
         </>
     )
 }

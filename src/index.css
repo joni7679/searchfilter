@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+main {
+    overflow: hidden;
+}
+
 .sidebar::-webkit-scrollbar {
     display: none;
 }
@@ -18,8 +22,7 @@
 
 .active {
     transform: translateX(-400%);
-    transition:0.5s ease-in
-
+    transition: 0.5s ease-in
 }
 
 .shimmer-effect {
@@ -54,7 +57,7 @@
     .xs {
         flex-direction: column;
         align-items: center;
-
+        gap: 10px;
     }
 
 }

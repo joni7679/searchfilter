@@ -4,21 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { RxCross1 } from 'react-icons/rx';
 import { FaSearch } from 'react-icons/fa';
-import ItemList from './ItemList';
-import SearchResults from '../pages/SearchResults';
-
 const SearchBox = () => {
     const [isClicked, setIsClick] = useState(false);
     const [searchquery, setsearchQuery] = useState('');
     const [results, setResults] = useState([]);
     const navigate = useNavigate();
-
     const handleInputChange = (e) => {
         setsearchQuery(e.target.value);
     };
 
     const handleSearch = async () => {
-
         navigate(`/search?q=${encodeURIComponent(searchquery.trim())}`);
         try {
             const response = await axios.get(`https://dummyjson.com/products/search?q=${searchquery}`);

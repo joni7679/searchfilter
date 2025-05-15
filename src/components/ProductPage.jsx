@@ -41,7 +41,7 @@ function ProductPage() {
             <Suspense fallback={<Loading />}>
                 <Navbar />
                 <main className='w-full min-h-screen bg-gray-900  flex items-center justify-center sm:flex-col text-white product-container'>
-                    <div className='w-[60vw] mt-5 h-auto border-2 border-white shadow-2xs rounded p-5 bg-gray-800 flex gap-5 
+                    <div className='w-[60vw] mt-[100px] h-auto border-2 border-white shadow-2xs rounded p-5 bg-gray-800 flex gap-5 
                     items-product'>
                         <div className='img-list '>
                             {product.images.map((img, index) => {
@@ -69,7 +69,7 @@ function ProductPage() {
                             <p className='text-green-500'>In Stock: {product.stock}</p>
                             <p className='text-green-500 font-semibold capitalize'>warrantyInformation : {product.warrantyInformation}</p>
                             <p className='text-green-500 font-semibold capitalize'>returnPolicy : {product.returnPolicy}</p>
-                            <div className="flex mt-5 gap-2 items-center">
+                            <div className="md:flex mt-5 gap-2 items-center  xs">
                                 <button className='px-[25px] py-[10px] bg-gray-900 text-white rounded-xl cursor-pointer hover:bg-gray-950'>Add To Cart</button>
                                 <button className='px-[25px] py-[10px] bg-gray-900 text-white rounded-xl cursor-pointer hover:bg-gray-950'>Buy Now</button>
                             </div>

@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaStar } from 'react-icons/fa';
 import PaginitonBtn from './PaginitonBtn';
 import { Link } from 'react-router-dom';
 import Shimmer from './Shimmer';
+import { CategoryData } from '../context/CategoriesContext';
+import Navbar from './Navbar';
 
 const ItemList = ({ product, isopen, SetisOpen }) => {
-    { product.length }
+   
+   
     if (!product) {
         return (
             <>
-                <Navbar />
                 <div className="w-full h-screen flex items-center justify-center bg-gray-900 text-white">
                     <Shimmer />
                 </div>
@@ -18,9 +20,9 @@ const ItemList = ({ product, isopen, SetisOpen }) => {
     }
     return (
         <>
+        
             <div className="flex justify-center items-start item-list h-[70vh] p-5 overflow-y-auto  text-white w-full">
-                <div className={`grid gap-6 max-w-7xl w-full transition-all duration-500 linear  ${isopen ? 'md:grid-cols-4 ' : 'lg:grid-cols-3 md:grid-cols-2'}`}
-                >
+                <div className={`grid gap-6 max-w-7xl w-full transition-all duration-500 linear  ${isopen ? 'lg:grid-cols-4  md:grid-cols-3 ' : 'lg:grid-cols-3 md:grid-cols-2'}`}>
                     {product.map((item, index) => (
                         <Link to={`/product/${item.id}?title=${encodeURIComponent(item.title)}`}
                             key={index}
