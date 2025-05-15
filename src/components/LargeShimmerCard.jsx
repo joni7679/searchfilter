@@ -21,21 +21,17 @@ function LargeShimmerCard() {
                     <div className='main-img-div w-60 h-60 flex-shrink-0 shimmer-effect'>
 
                     </div>
-
                     <div className='shimmer-effect'>
 
                     </div>
-
                 </div>
                 <h1 className='mt-5 text-2xl font-stretch-semi-condensed'>Previous customer Reviews</h1>
                 <div className='w-[60vw] h-[25rem] overflow-scroll review mt-5 border-2 border-white shadow-2xs rounded p-5 bg-gray-800 flex gap-5'>
-
                     <div className="w-[60vw] h-[25rem] mt-5 border-2 border-white shadow-2xl rounded p-5 bg-gray-800 flex items-center flex-col gap-5 shimmer-effect">
 
                     </div>
                 </div>
             </main >
-
         </>
     )
 }

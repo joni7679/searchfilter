@@ -7,10 +7,7 @@ import { useLocation } from 'react-router-dom';
 const Category = () => {
     const { loading, products } = useContext(CategoryData);
     const { Category } = useLocation();
-    console.log("Category",Category);
-
     console.log("your cate products is", products);
-
     if (loading) {
         return (
             <div className="w-full h-screen flex items-center justify-center bg-gray-900 text-white">
