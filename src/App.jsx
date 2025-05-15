@@ -11,11 +11,11 @@ function App() {
       <main className='w-full bg-gray-900 h-screen'>
         <Navbar />
         <div className="flex md:flex-row items-start">
-          <div className={`${isopen ? "w-0" : "md:w-[20%]"}`}>
+          <div className={`sidebar-parent ${isopen ? "w-0" : "md:w-[20%]"}`}>
             <Sidebar isopen={isopen} SetisOpen={SetisOpen} />
           </div>
-          <div className={`w-full bg-gray-900 ${isopen ? "md:w-full" : "md:w-[80%]"}`}>
-            <Outlet /> 
+          <div className={`w-full min-h-screen bg-gray-900 ${isopen ? "md:w-full" : "md:w-[80%]"}`}>
+            <Outlet />
           </div>
         </div>
       </main>

@@ -55,14 +55,14 @@ function SearchResults() {
     return (
         <>
             <Suspense fallback={<Loading />}>
-                <main className='w-full bg-gray-900 h-screen'>
+                <main className='w-full bg-gray-900 min-h-screen'>
                     <div className={`w-full  bg-gray-900 `}>
                         {products.length > 0 ? (
                             <ItemList product={products} isopen={isopen} SetisOpen={SetisOpen} />
                         ) : (
-                            <div className={`w-full h-screen flex items-center justify-center ${loading ? 'bg-gray-900' : ''}`}>
+                            <div className={`w-full h-full flex items-center justify-center ${loading ? 'bg-gray-900' : ''}`}>
                                 {loading ? (
-                                    <div className="w-full h-screen flex items-center justify-center bg-gray-900 text-white">
+                                    <div className="w-full h-full flex items-center justify-center bg-gray-900 text-white">
                                         <Shimmer />
                                     </div>
                                 ) : (

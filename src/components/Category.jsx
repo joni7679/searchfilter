@@ -2,9 +2,13 @@ import React, { useContext } from 'react';
 import { CategoryData } from '../context/CategoriesContext';
 import Shimmer from './Shimmer';
 import ItemList from './ItemList';
+import { useLocation } from 'react-router-dom';
 
 const Category = () => {
     const { loading, products } = useContext(CategoryData);
+    const { Category } = useLocation();
+    console.log("Category",Category);
+
     console.log("your cate products is", products);
 
     if (loading) {

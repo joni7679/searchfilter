@@ -51,6 +51,20 @@ main {
 
 }
 
+@media(max-width:768px) {
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width:760px) {
+    .product-item {
+        width: 80%;
+    }
+}
+
 @media (max-width:640px) {
 
     .product-container,
@@ -59,5 +73,13 @@ main {
         align-items: center;
         gap: 10px;
     }
+
+    .sidebar-parent {
+        position: absolute;
+    }
+
+
+
+
 
 }

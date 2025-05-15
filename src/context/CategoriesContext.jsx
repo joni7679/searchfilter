@@ -4,7 +4,6 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 export const CategoryData = createContext();
 const CategoriesProvider = ({ children }) => {
-    // let navigate = useNavigate()
     const [categories, setCategories] = useState([]);
     const [catname, setCatname] = useState("")
     const [products, setProducts] = useState([]);
