@@ -9,7 +9,7 @@ function LargeShimmerCard() {
                 <div className='w-[60vw] mt-5 h-auto border-2 border-white shadow-2xs rounded p-5 bg-gray-800 flex gap-5 
                                    items-product'>
                     <div className='img-list '>
-                        {items.map((index) => {
+                        {items.map((_, index) => {
                             return (
                                 <div key={index} className='w-16 h-16 bg-gray-900 mt-2 rounded-xl shimmer-effect'>
 

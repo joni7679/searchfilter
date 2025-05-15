@@ -16,9 +16,15 @@
     display: none;
 }
 
+.active {
+    transform: translateX(-400%);
+    transition:0.5s ease-in
+
+}
+
 .shimmer-effect {
     position: relative;
-    background: linear-gradient(90deg, #364153, #101828 , #1E2939 );
+    background: linear-gradient(90deg, #364153, #101828, #1E2939);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite linear;
 }

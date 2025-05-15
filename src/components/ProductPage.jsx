@@ -64,18 +64,18 @@ function ProductPage() {
                         <div>
                             <h1 className='text-3xl font-bold mb-2'>{product.title}</h1>
                             <p className='text-gray-300 mb-2'>{product.description}</p>
-                            <p className='text-white font-semibold text-xl mb-1'>${product.price}</p>
+                            <p className='text-white font-semibold text-xl mb-1'>  ₹ {product.price}</p>
                             <p className='font-semibold capitalize flex items-center gap-3'>rating : {product.rating} <FaStar /></p>
-                            <p className='text-green-400'>In Stock: {product.stock}</p>
-                            <p className='text-green-400 font-semibold capitalize'>warrantyInformation : {product.warrantyInformation}</p>
-                            <p className='text-green-400 font-semibold capitalize'>returnPolicy : {product.returnPolicy}</p>
+                            <p className='text-green-500'>In Stock: {product.stock}</p>
+                            <p className='text-green-500 font-semibold capitalize'>warrantyInformation : {product.warrantyInformation}</p>
+                            <p className='text-green-500 font-semibold capitalize'>returnPolicy : {product.returnPolicy}</p>
                             <div className="flex mt-5 gap-2 items-center">
                                 <button className='px-[25px] py-[10px] bg-gray-900 text-white rounded-xl cursor-pointer hover:bg-gray-950'>Add To Cart</button>
                                 <button className='px-[25px] py-[10px] bg-gray-900 text-white rounded-xl cursor-pointer hover:bg-gray-950'>Buy Now</button>
                             </div>
                         </div>
                     </div>
-                    <h1 className='mt-5 text-2xl'>Previous customer Reviews</h1>
+                    <h1 className='mt-5 text-2xl font-stretch-semi-condensed'>Previous customer Reviews</h1>
                     <div className='w-[60vw] h-[25rem] overflow-scroll review mt-5 border-2 border-white shadow-2xs rounded p-5 bg-gray-800 flex gap-5'>
 
                         <div className="w-[60vw] h-[25rem] mt-5 border-2 border-white shadow-2xl rounded p-5 bg-gray-800 flex items-center flex-col gap-5">

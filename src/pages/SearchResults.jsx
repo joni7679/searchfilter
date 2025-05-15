@@ -12,6 +12,7 @@ import Shimmer from '../components/Shimmer';
 function SearchResults() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true)
+    const [isopen, SetisOpen] = useState(false);
     const { search } = useLocation();
     console.log("search", search);
     const queryParams = new URLSearchParams(search);
@@ -53,18 +54,16 @@ function SearchResults() {
 
     return (
         <>
-
-
             <Suspense fallback={<Loading />}>
                 <main className='w-full bg-gray-900 h-screen'>
                     <Navbar />
                     <div className="flex  md:flex-row items-start">
-                        <div className='w-full md:w-[20%]'>
-                            <Sidebar />
+                        <div className={`${isopen ? "w-0" : "md:w-[20%]"}`}>
+                            <Sidebar isopen={isopen} SetisOpen={SetisOpen} />
                         </div>
-                        <div className="w-full md:w-[80%] bg-gray-900">
+                        <div className={`w-full  bg-gray-900 ${isopen ? "md:w-full" : "md:w-[80%]"}`}>
                             {products.length > 0 ? (
-                                <ItemList product={products} />
+                                <ItemList product={products} isopen={isopen} SetisOpen={SetisOpen} />
                             ) : (
                                 <div className={`w-full h-screen flex items-center justify-center ${loading ? 'bg-gray-900' : ''}`}>
                                     {loading ? (
@@ -76,7 +75,6 @@ function SearchResults() {
                                     )}
                                 </div>
                             )}
-
                         </div>
                     </div>
                 </main>

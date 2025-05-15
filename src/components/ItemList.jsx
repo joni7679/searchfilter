@@ -4,7 +4,7 @@ import PaginitonBtn from './PaginitonBtn';
 import { Link } from 'react-router-dom';
 import Shimmer from './Shimmer';
 
-const ItemList = ({ product }) => {
+const ItemList = ({ product, isopen, SetisOpen }) => {
     { product.length }
     if (!product) {
         return (
@@ -19,7 +19,8 @@ const ItemList = ({ product }) => {
     return (
         <>
             <div className="flex justify-center items-start item-list h-[70vh] p-5 overflow-y-auto  text-white w-full">
-                <div className="grid md:grid-cols-3 gap-6 max-w-7xl w-full">
+                <div className={`grid gap-6 max-w-7xl w-full transition-all duration-500 linear  ${isopen ? 'md:grid-cols-4 ' : 'md:grid-cols-3'}`}
+                >
                     {product.map((item, index) => (
                         <Link to={`/product/${item.id}?title=${encodeURIComponent(item.title)}`}
                             key={index}
@@ -30,7 +31,7 @@ const ItemList = ({ product }) => {
                             <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                             <p className="text-sm text-gray-100 mb-2">{item.description}</p>
                             <p className="text-sm"><span className="font-medium">Category:</span> {item.category}</p>
-                            <p className="text-sm"><span className="font-medium">Price:</span> ${item.price}</p>
+                            <p className="text-sm"><span className="font-medium">Price:</span>  ₹ {item.price}</p>
                             <p className="text-sm"><span className="font-medium">Discount:</span> {item.discountPercentage}%</p>
                             <p className="text-sm flex items-center gap-2"><span className="font-semibold">Rating:</span> {item.rating} <FaStar className='inline-block text-amber-400' />
                             </p>

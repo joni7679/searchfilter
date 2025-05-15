@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { lazy, Suspense, useEffect, useState } from 'react'
 import Loading from '../components/Loading';
+import Shimmer from '../components/Shimmer';
 const Navbar = lazy(() => import('../components/Navbar'));
 const Sidebar = lazy(() => import('../components/Sidebar'));
 const ItemList = lazy(() => import('../components/ItemList'));
@@ -9,6 +10,7 @@ function Home() {
     const [categories, setCategories] = useState([]);
     const [totalPage, setotalPage] = useState(10);
     const [currentPage, setCurrentPage] = useState(1);
+    const [isopen, SetisOpen] = useState(false);
     let ProductPerPage = 5;
     // nextpagelogic
     const handleNext = () => {
@@ -31,13 +33,22 @@ function Home() {
         }
     };
 
-    
+
 
     useEffect(() => {
         ProductsData();
     }, []);
 
-
+    if (!product) {
+        return (
+            <>
+                <Navbar />
+                <div className="w-full h-screen flex items-center justify-center bg-gray-900 text-white">
+                    <Shimmer />
+                </div>
+            </>
+        );
+    }
 
     return (
         <>
@@ -45,11 +56,12 @@ function Home() {
                 <main className='w-full bg-gray-900'>
                     <Navbar />
                     <div className="flex  md:flex-row items-start">
-                        <div className='w-full md:w-[20%]'>
-                            <Sidebar />
+                        <div className={`${isopen ? "w-0" : "md:w-[20%]"}`}
+                        >
+                            <Sidebar isopen={isopen} SetisOpen={SetisOpen} />
                         </div>
-                        <div className="w-full md:w-[80%] bg-gray-900">
-                            <ItemList product={product} />
+                        <div className={`w-full  bg-gray-900 trtransition-all duration-500 linear px-5 ${isopen ? "md:w-full" : "md-w-[80%]"}`}>
+                            <ItemList product={product} isopen={isopen} SetisOpen={SetisOpen} />
                         </div>
                     </div>
                 </main>
