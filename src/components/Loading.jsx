@@ -5,9 +5,7 @@ function Loading() {
   return (
     <>
       <main className='w-full bg-gray-950 h-screen flex items-center justify-center'>
-
         <Shimmer />
-
       </main>
     </>
   )

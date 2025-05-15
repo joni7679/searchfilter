@@ -7,8 +7,6 @@ import { CategoryData } from '../context/CategoriesContext';
 import Navbar from './Navbar';
 
 const ItemList = ({ product, isopen, SetisOpen }) => {
-   
-   
     if (!product) {
         return (
             <>
@@ -20,7 +18,6 @@ const ItemList = ({ product, isopen, SetisOpen }) => {
     }
     return (
         <>
-        
             <div className="flex justify-center items-start item-list h-[70vh] p-5 overflow-y-auto  text-white w-full">
                 <div className={`grid gap-6 max-w-7xl w-full transition-all duration-500 linear  ${isopen ? 'md:grid-cols-4 ' : 'lg:grid-cols-3 md:grid-cols-2'}`}>
                     {product.map((item, index) => (
