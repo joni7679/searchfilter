@@ -1,13 +1,55 @@
-# React + Vite
+# React Search & Filter with Context API and useLocation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ A dynamic search and filter system built with React, Tailwind CSS, and React Router’s `useLocation`. This project demonstrates how to handle URL query parameters for filtering and managing global state efficiently using Context API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🖼️ Project Screenshot
 
-## Expanding the ESLint configuration
+![Search & Filter UI Preview](./public/Screenshot.png)
+![Search & Filter UI Preview](./public/Screenshot2.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# searchfilter
+## 🚀 Live Demo  
+[View Live Project Here](https://searchfilter-phi.vercel.app/)  
+
+---
+
+## 🧩 Features
+
+- 🔍 Dynamic search bar filtering products by name  
+- 🗂️ Multi-category filtering with React Context API  
+- 🎨 Responsive and clean UI powered by Tailwind CSS  
+- 🔗 URL query parameters handled via React Router’s `useLocation` and `URLSearchParams`  
+- 💡 Props drilling minimized using Context API for scalable state management  
+- 🔧 API-friendly search logic with `encodeURIComponent` to safely encode search queries  
+
+---
+
+## 🛠️ Technologies Used
+
+- React.js (Functional Components, Hooks)  
+- React Router DOM (`useLocation`)  
+- Context API for global state management  
+- Tailwind CSS for styling  
+- JavaScript (ES6+)  
+
+---
+
+##  What I Learned
+
+- How to parse and use URL search parameters (`useLocation` + `URLSearchParams`)  
+- Benefits of using Context API vs props drilling in React  
+- Safe URL encoding with `encodeURIComponent` to handle special characters in queries  
+- How to build reusable and scalable search/filter components  
+- Integrating frontend search logic with potential backend APIs  
+
+---
+
+## 💡 How to Run Locally
+
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/joni7679/searchfilter
+   cd searchfilter
+   npm i 
+   npm run dev

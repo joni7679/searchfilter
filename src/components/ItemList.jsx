@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { FaStar } from 'react-icons/fa';
-import PaginitonBtn from './PaginitonBtn';
 import { Link } from 'react-router-dom';
 import Shimmer from './Shimmer';
 import { CategoryData } from '../context/CategoriesContext';
@@ -48,7 +47,7 @@ const ItemList = ({ product, isopen, SetisOpen }) => {
                     ))}
                 </div>
             </div>
-            <PaginitonBtn />
+           
         </>
     );
 };
